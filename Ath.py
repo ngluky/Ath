@@ -29,10 +29,9 @@ def login(passw:str,user:str,pathCookie:str = None) -> dict:
         data_return["err_mess"] = None
         data_return["data"] = Get_AccessToken_Entitlements_Token(data)
 
-        path_list = pathCookie.split('\\')
-        path_list.pop(-1)
-        if (not os.path.exists("\\".join(path_list))):
-            os.makedirs("\\".join(path_list))
+        
+        if (not os.path.exists(pathCookie.replace(os.path.basename(pathCookie) , '')) and os.path.basename(pathCookie) != pathCookie):
+            os.makedirs(pathCookie.replace(os.path.basename(pathCookie) , ''))
 
 
         if (pathCookie):
